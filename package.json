@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Sophie",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bingxuelover/vue2-axios.git"
+  },
   "private": false,
   "scripts": {
     "build": "rollup -c",
