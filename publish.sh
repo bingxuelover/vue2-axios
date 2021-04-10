@@ -6,4 +6,3 @@ echo "-------publishing-------"
 npm publish # 发布
 npm config set registry=https://registry.npm.taobao.org # 设置为淘宝镜像
 echo "发布完成"
-exit

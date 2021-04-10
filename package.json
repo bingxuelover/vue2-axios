@@ -1,14 +1,15 @@
 {
   "name": "vue2-axios",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "vue2 element axios",
-  "main": "index.js",
+  "main": "dist/iview-ui.cjs.prod.js",
   "author": "Sophie",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:bingxuelover/vue2-axios.git"
   },
+  "homepage": "http://www.huangyuhong.cn",
   "private": false,
   "scripts": {
     "build": "rollup -c",
