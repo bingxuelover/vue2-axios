@@ -6,23 +6,18 @@
 "axios",
 "qs",
 
-## 配置
-
-- 初始化 axios 的配置
-
-axios.defaults.baseURL = 'https://api.example.com';
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.timeout = 10000;
-
 ## main.js 引用
 
 ### 引入
 
 import Vue from 'vue'
+
 import App from './App.vue'
+
 import router from './router'
+
 import http from "./config/post";
+
 import './utils/element-ui'
 
 ### 注册
@@ -30,6 +25,12 @@ import './utils/element-ui'
 Vue.use(http)
 
 ### 设置
+
+- 初始化配置
+
+http.defaultConfig.baseURL = 'https://api.example.com';
+
+http.defaultConfig.timeout = 10000;
 
 - 设置出错时的路由跳转
 

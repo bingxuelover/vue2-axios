@@ -26,15 +26,16 @@ var qs__default = /*#__PURE__*/_interopDefaultLegacy(qs);
 }
 */
 
-var defaultConfig = {
+var defaultConfig = Object.assign({
   routerChange: function routerChange() {},
   tipMessage: function tipMessage(msg) {
     alert(msg);
   },
   timeout: 1000 * 300,
   hasToken: false,
-  tokenError: 1010
-}; // 创建axios实例
+  tokenError: 1010,
+  baseURL: ""
+}, axios__default['default'].defaults); // 创建axios实例
 
 var instance = axios__default['default'].create(defaultConfig);
 /**
@@ -71,14 +72,14 @@ function getRequest(path, data) {
   const token = sessionStorage.getItem("token");
 
   if (defaultConfig.hasToken && !token) {
-    toLogin();
+    changePage();
   }
 
   const tokenData = defaultConfig.hasToken ? {
     token
   } : {};
   let postData = qs__default['default'].stringify(Object.assign({}, tokenData, data));
-  const postPath = path;
+  const postPath = defaultConfig.baseURL + path;
   return new Promise((resolve, reject) => {
     instance.get(postPath + "?" + postData).then(res => {
       const datas = res.data;
@@ -88,7 +89,7 @@ function getRequest(path, data) {
         tip(datas.desc);
         sessionStorage.clear();
         localStorage.clear();
-        toLogin();
+        changePage();
       } else {
         resolve(datas);
       }
@@ -102,14 +103,14 @@ function postRequest(path, data) {
   const token = sessionStorage.getItem("token");
 
   if (defaultConfig.hasToken && !token) {
-    toLogin();
+    changePage();
   }
 
   const tokenData = defaultConfig.hasToken ? {
     token
   } : {};
   let postData = qs__default['default'].stringify(Object.assign({}, tokenData, data));
-  const postPath = path;
+  const postPath = defaultConfig.baseURL + path;
   return new Promise((resolve, reject) => {
     instance.post(postPath, postData).then(res => {
       // console.log('axios response', res.data);
@@ -120,7 +121,7 @@ function postRequest(path, data) {
         tip(datas.desc);
         sessionStorage.clear();
         localStorage.clear();
-        toLogin();
+        changePage();
       } else {
         resolve(datas);
       }
@@ -144,7 +145,7 @@ const tip = msg => {
  */
 
 
-const toLogin = () => {
+const changePage = () => {
   defaultConfig.routerChange();
 };
 /**
@@ -158,7 +159,7 @@ const errorHandle = (status, other) => {
   switch (status) {
     // 401: 未登录状态，跳转登录页
     case 401:
-      toLogin();
+      changePage();
       break;
     // defaultConfig.tokenError token过期
     // 清除token并跳转登录页
@@ -167,7 +168,7 @@ const errorHandle = (status, other) => {
       tip("登录信息已过期，请重新登录！");
       sessionStorage.removeItem("token");
       setTimeout(() => {
-        toLogin();
+        changePage();
       }, 1000);
       break;
     // 404请求不存在
