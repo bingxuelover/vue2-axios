@@ -32,16 +32,21 @@ Vue.use(http)
 ### 设置
 
 - 设置出错时的路由跳转
+
   http.defaultConfig.routerChange = function () {
   router.replace({
   path: "/nopage",
   });
   };
+
 - 设置错误提示的弹出方式
+
   http.defaultConfig.tipMessage = function(msg) {
   slert(msg);
   };
+
 - 设置是否判断 token，token 的错误码
+
   http.defaultConfig.hasToken = true;//默认不判断
   http.defaultConfig.tokenError = 1122;
 
