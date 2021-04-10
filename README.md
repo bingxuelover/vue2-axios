@@ -48,9 +48,11 @@ Vue.use(http)
 - 设置是否判断 token，token 的错误码
 
   http.defaultConfig.hasToken = true;//默认不判断
+
   http.defaultConfig.tokenError = 1122;
 
-## VUe 页面使用
+## Vue 页面使用
 
 this.$get("getPath", {}).then(res => { if (res.code == 200) { } });
+
 this.$post("postPath", {}).then(res => { if (res.code == 200) { } });
