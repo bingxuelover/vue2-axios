@@ -44,7 +44,7 @@ function mergeConfig(baseConfig, configB) {
 }
 
 function createFileName(formatName) {
-  return `dist/iview-ui.${formatName}.js`;
+  return `dist/vue2-axios.${formatName}.js`;
 }
 
 // es-bundle
