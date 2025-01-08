@@ -1,6 +1,6 @@
 {
   "name": "vue2-axios",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "vue2 axios",
   "main": "dist/vue2-axios.cjs.prod.js",
   "author": "Sophie",
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "git@github.com:bingxuelover/vue2-axios.git"
   },
-  "homepage": "http://www.huangyuhong.cn",
+  "homepage": "http://www.hyhweb.cn",
   "private": false,
   "scripts": {
     "build": "rollup -c",
